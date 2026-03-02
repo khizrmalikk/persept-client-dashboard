@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  name         String?
+  role         String   @default("viewer") // admin, manager, viewer
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model AgentLog {
+  id                  String   @id @default(cuid())
+  timestamp           DateTime
+  agentName           String   @map("agent_name")
+  actionType          String   @map("action_type")
+  guestName           String?  @map("guest_name")
+  messagePreview      String?  @map("message_preview")
+  fullMessage         String?  @map("full_message")
+  agentResponse       String?  @map("agent_response")
+  channel             String?
+  status              String   @default("handled") // handled, escalated, pending
+  responseTimeSeconds Int?     @map("response_time_seconds")
+  escalationReason    String?  @map("escalation_reason")
+  metadata            Json?
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([agentName])
+  @@index([timestamp])
+  @@index([status])
+  @@map("agent_logs")
+}
+
+model MetricsDaily {
+  id                     String   @id @default(cuid())
+  date                   DateTime @db.Date
+  agentName              String   @map("agent_name")
+  totalActions           Int      @default(0) @map("total_actions")
+  totalEscalations       Int      @default(0) @map("total_escalations")
+  avgResponseTimeSeconds Int?     @map("avg_response_time_seconds")
+  upsellsCompleted       Int      @default(0) @map("upsells_completed")
+  revenueGenerated       Decimal  @default(0) @map("revenue_generated") @db.Decimal(10, 2)
+  metadata               Json?
+
+  @@unique([date, agentName])
+  @@map("metrics_daily")
+}
+
+model Escalation {
+  id               String    @id @default(cuid())
+  createdAt        DateTime  @default(now()) @map("created_at")
+  resolvedAt       DateTime? @map("resolved_at")
+  agentName        String    @map("agent_name")
+  priority         String    @default("medium") // high, medium, low
+  guestName        String?   @map("guest_name")
+  message          String?
+  escalationReason String?   @map("escalation_reason")
+  status           String    @default("pending") // pending, resolved, archived
+  resolvedBy       String?   @map("resolved_by")
+  resolutionNotes  String?   @map("resolution_notes")
+
+  @@index([status])
+  @@index([priority])
+  @@map("escalations")
+}
+
+model Setting {
+  key   String @id
+  value Json
+
+  @@map("settings")
+}

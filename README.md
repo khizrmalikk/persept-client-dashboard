@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Persept Client Dashboard
 
-## Getting Started
+White-label AI agent management dashboard for hotel clients. Built with Next.js 16, TypeScript, Tailwind CSS v4, and shadcn/ui.
 
-First, run the development server:
+## Features
+
+- **Overview Dashboard** — KPI cards, message volume charts, agent activity breakdown
+- **Activity Logs** — Filterable table of all agent actions
+- **Performance Analytics** — Per-agent metrics with charts (Sarah, Marcus, Olivia, Alex)
+- **Escalations** — Queue of messages requiring human attention
+- **Settings** — Integration status, agent configuration
+- **Authentication** — Email/password login via NextAuth.js
+- **White-Label** — Configurable branding via environment variables
+- **Responsive** — Mobile, tablet, and desktop layouts
+
+## Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Generate Prisma client
+npx prisma generate
+
+# Copy environment config
+cp .env.example .env
+
+# Start dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Demo credentials**: `admin@demo.com` / `admin123`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## White-Label Configuration
 
-## Learn More
+Set these environment variables to customize per client:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NEXT_PUBLIC_CLIENT_NAME` | Hotel/client name | Demo Hotel |
+| `NEXT_PUBLIC_CLIENT_LOGO_URL` | Logo image path | (fallback icon) |
+| `NEXT_PUBLIC_CLIENT_PRIMARY_COLOR` | Primary brand color | #1E40AF |
+| `NEXT_PUBLIC_CLIENT_SECONDARY_COLOR` | Secondary color | #10B981 |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 + shadcn/ui
+- **Charts**: Recharts
+- **Auth**: NextAuth.js
+- **Database**: PostgreSQL + Prisma 7 (optional for Phase 1)
+- **Icons**: Lucide React
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/                    # Next.js pages
+│   ├── page.tsx            # Overview dashboard
+│   ├── login/              # Login page
+│   ├── logs/               # Activity logs
+│   ├── analytics/          # Performance analytics
+│   ├── escalations/        # Escalation queue
+│   ├── settings/           # Configuration
+│   └── api/auth/           # NextAuth API routes
+├── components/
+│   ├── layout/             # Sidebar, Header, DashboardLayout
+│   ├── dashboard/          # KPI cards, charts, agent status
+│   └── ui/                 # shadcn/ui components
+├── lib/                    # Utilities, config, auth, prisma
+└── types/                  # TypeScript type definitions
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database Setup (Optional)
+
+Phase 1 uses mock data. To connect a real database:
+
+```bash
+# Set DATABASE_URL in .env
+npx prisma migrate dev --name init
+npx prisma generate
+```
+
+## Deployment
+
+```bash
+npm run build
+npm start
+```
+
+For Docker deployment, see the architecture doc.
+
+## Development Phases
+
+- [x] **Phase 1**: MVP Foundation (dashboard, auth, layout, mock data)
+- [ ] **Phase 2**: Agent Integration (real API data, webhooks)
+- [ ] **Phase 3**: Advanced Features (exports, user management, notifications)
+- [ ] **Phase 4**: Polish & Deploy (Docker, documentation, first client)
