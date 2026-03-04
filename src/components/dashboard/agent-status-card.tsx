@@ -14,7 +14,7 @@ export function AgentStatusCard({ agent }: { agent: Agent }) {
     <motion.div
       whileHover={{ y: -2, scale: 1.01 }}
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative overflow-hidden rounded-xl border border-border/50 bg-card p-5 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/20"
+      className="group relative overflow-hidden rounded-2xl border border-[#e4e8ef] bg-white p-5 transition-all duration-300 hover:border-[#c7d2e0] hover:shadow-lg hover:shadow-black/[0.03]"
     >
       <div className="flex items-start gap-4">
         {/* Avatar with gradient ring */}
@@ -51,31 +51,31 @@ export function AgentStatusCard({ agent }: { agent: Agent }) {
         {/* Info */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <p className="font-semibold text-sm">{agent.name}</p>
+            <p className="font-semibold text-sm text-[#0c1222]">{agent.name}</p>
             <span
               className={cn(
                 "rounded-full px-2 py-0.5 text-[11px] font-medium capitalize",
                 agent.status === "online"
-                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                  : "bg-muted text-muted-foreground"
+                  ? "bg-emerald-500/10 text-emerald-700"
+                  : "bg-[#f7f8fa] text-[#5a6785]"
               )}
             >
               {agent.status}
             </span>
           </div>
-          <p className="text-xs text-muted-foreground mt-0.5">{agent.role}</p>
+          <p className="text-xs text-[#5a6785] mt-0.5">{agent.role}</p>
         </div>
       </div>
 
       {/* Stats */}
       <div className="mt-4 flex items-center gap-4 text-xs">
-        <div className="flex items-center gap-1.5 text-muted-foreground">
+        <div className="flex items-center gap-1.5 text-[#5a6785]">
           <MessageSquare className="h-3 w-3" />
-          <span className="font-medium tabular-nums">{agent.todayMessages}</span>
+          <span className="font-medium tabular-nums text-[#0c1222]">{agent.todayMessages}</span>
           <span>today</span>
         </div>
-        <span className="text-border">·</span>
-        <span className="text-muted-foreground">{agent.lastActivity}</span>
+        <span className="text-[#e4e8ef]">·</span>
+        <span className="text-[#94a3b8]">{agent.lastActivity}</span>
       </div>
     </motion.div>
   );

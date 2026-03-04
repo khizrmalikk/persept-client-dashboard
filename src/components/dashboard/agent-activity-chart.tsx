@@ -9,18 +9,20 @@ import {
   Tooltip,
 } from "recharts";
 import { agentActivityData } from "@/lib/mock-data";
+import { chartColors } from "@/lib/design-tokens";
 
-const COLORS = ["#6366f1", "#8b5cf6", "#10b981", "#f59e0b"];
+// Use exact brand colors - red tints for agents
+const COLORS = chartColors.redTints;
 
 function CustomTooltip({ active, payload }: any) {
   if (!active || !payload?.length) return null;
   const data = payload[0];
   return (
-    <div className="rounded-lg border border-border/60 bg-popover/95 px-3.5 py-2.5 shadow-xl backdrop-blur-sm">
+    <div className="rounded-lg border border-[#e4e8ef] bg-white px-3.5 py-2.5 shadow-xl">
       <div className="flex items-center gap-2 text-xs">
         <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: data.payload.color }} />
-        <span className="font-semibold text-foreground">{data.name}</span>
-        <span className="text-muted-foreground">{data.value}%</span>
+        <span className="font-semibold text-[#0c1222]">{data.name}</span>
+        <span className="text-[#5a6785]">{data.value}%</span>
       </div>
     </div>
   );
@@ -28,10 +30,10 @@ function CustomTooltip({ active, payload }: any) {
 
 export function AgentActivityChart() {
   return (
-    <Card className="border-border/50 shadow-none">
+    <Card className="border-[#e4e8ef] shadow-none rounded-2xl">
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-semibold">Agent Activity</CardTitle>
-        <p className="text-xs text-muted-foreground mt-0.5">Message distribution</p>
+        <CardTitle className="text-sm font-semibold text-[#0c1222]">Agent Activity</CardTitle>
+        <p className="text-xs text-[#5a6785] mt-0.5">Message distribution</p>
       </CardHeader>
       <CardContent className="pt-0">
         <div className="flex items-center gap-6">
@@ -64,8 +66,8 @@ export function AgentActivityChart() {
                   className="h-3 w-3 rounded-full flex-shrink-0"
                   style={{ backgroundColor: COLORS[i % COLORS.length] }}
                 />
-                <span className="text-sm font-medium flex-1">{agent.name}</span>
-                <span className="text-sm font-semibold tabular-nums">{agent.value}%</span>
+                <span className="text-sm font-medium flex-1 text-[#3d4b63]">{agent.name}</span>
+                <span className="text-sm font-semibold tabular-nums text-[#0c1222]">{agent.value}%</span>
               </div>
             ))}
           </div>

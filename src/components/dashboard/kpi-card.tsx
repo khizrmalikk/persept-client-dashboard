@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingUp, TrendingDown, MessageSquare, Clock, AlertTriangle, Timer } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  MessageSquare,
+  Clock,
+  AlertTriangle,
+  Timer,
+} from "lucide-react";
 import type { KPIData } from "@/types";
 import { cn } from "@/lib/utils";
 import { AnimatedNumber } from "@/components/shared/animated-number";
@@ -13,11 +20,12 @@ const iconMap: Record<string, React.ElementType> = {
   timer: Timer,
 };
 
-const iconGradients: Record<string, string> = {
-  "message-square": "from-blue-500 to-indigo-600",
-  clock: "from-cyan-500 to-blue-500",
-  "alert-triangle": "from-amber-500 to-orange-500",
-  timer: "from-emerald-500 to-teal-500",
+// Icon colors using agent-like tints
+const iconStyles: Record<string, { bg: string; icon: string }> = {
+  "message-square": { bg: "bg-[#fef2f2]", icon: "text-[#b91c1c]" },
+  clock: { bg: "bg-[#eff6ff]", icon: "text-[#1d4ed8]" },
+  "alert-triangle": { bg: "bg-[#fef2f2]", icon: "text-[#b91c1c]" },
+  timer: { bg: "bg-[#ecfdf5]", icon: "text-[#047857]" },
 };
 
 function parseValue(formatted: string): { num: number; suffix: string } {
@@ -28,7 +36,7 @@ function parseValue(formatted: string): { num: number; suffix: string } {
 
 export function KPICard({ data }: { data: KPIData }) {
   const Icon = iconMap[data.icon] || MessageSquare;
-  const gradient = iconGradients[data.icon] || "from-indigo-500 to-purple-600";
+  const style = iconStyles[data.icon] || iconStyles["message-square"];
   const isPositive = data.trend.direction === "up";
   const isDown = data.trend.direction === "down";
   const isGoodTrend =
@@ -42,26 +50,28 @@ export function KPICard({ data }: { data: KPIData }) {
     <motion.div
       whileHover={{ y: -2 }}
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative overflow-hidden rounded-xl border border-border/50 bg-card p-6 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/20"
+      className="group relative overflow-hidden rounded-2xl border border-[#e4e8ef] bg-white p-6 transition-all duration-300 hover:border-[#c7d2e0] hover:shadow-lg hover:shadow-black/[0.03]"
     >
-      {/* Subtle gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:from-indigo-500/[0.02] group-hover:to-purple-500/[0.02]" />
-
       <div className="relative">
         <div className="flex items-center justify-between">
-          <div className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br shadow-sm",
-            gradient
-          )}>
-            <Icon className="h-[18px] w-[18px] text-white" />
+          {/* Circular icon badge */}
+          <div
+            className={cn(
+              "flex h-11 w-11 items-center justify-center rounded-xl",
+              style.bg
+            )}
+          >
+            <Icon className={cn("h-[18px] w-[18px]", style.icon)} />
           </div>
+
+          {/* Trend indicator */}
           {data.trend.direction !== "neutral" && (
             <div
               className={cn(
                 "flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold",
                 isGoodTrend
-                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                  : "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                  ? "bg-emerald-500/10 text-emerald-700"
+                  : "bg-[#fef2f2] text-[#b91c1c]"
               )}
             >
               {isPositive ? (
@@ -73,11 +83,12 @@ export function KPICard({ data }: { data: KPIData }) {
             </div>
           )}
         </div>
+
         <div className="mt-4">
-          <p className="text-3xl font-bold tracking-tight">
+          <p className="text-3xl font-bold tracking-tight text-[#0c1222]">
             <AnimatedNumber value={num} suffix={suffix} duration={1.2} />
           </p>
-          <p className="mt-1.5 text-[13px] font-medium text-muted-foreground">
+          <p className="mt-1.5 text-[13px] font-medium text-[#5a6785]">
             {data.label}
           </p>
         </div>
