@@ -11,8 +11,8 @@ import {
 import { agentActivityData } from "@/lib/mock-data";
 import { chartColors } from "@/lib/design-tokens";
 
-// Use exact brand colors - red tints for agents
-const COLORS = chartColors.redTints;
+// Agent-specific colors matching persept.ai
+const COLORS = ["#b91c1c", "#7c3aed", "#047857", "#1d4ed8"];
 
 function CustomTooltip({ active, payload }: any) {
   if (!active || !payload?.length) return null;
