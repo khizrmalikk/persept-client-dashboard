@@ -18,14 +18,14 @@ import { ArrowRight } from "lucide-react";
 
 export function RecentActivity() {
   return (
-    <Card className="border-border/50 shadow-none">
+    <Card className="border-[#e4e8ef] shadow-none rounded-2xl">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle className="text-sm font-semibold">Recent Activity</CardTitle>
-            <p className="text-xs text-muted-foreground mt-0.5">Latest agent actions</p>
+            <CardTitle className="text-sm font-semibold text-[#0c1222]">Recent Activity</CardTitle>
+            <p className="text-xs text-[#5a6785] mt-0.5">Latest agent actions</p>
           </div>
-          <button className="flex items-center gap-1 text-xs font-medium text-indigo-500 hover:text-indigo-600 transition-colors">
+          <button className="flex items-center gap-1 text-xs font-medium text-[#b91c1c] hover:text-[#991b1b] transition-colors">
             View all
             <ArrowRight className="h-3 w-3" />
           </button>
@@ -34,13 +34,13 @@ export function RecentActivity() {
       <CardContent className="pt-0">
         <Table>
           <TableHeader>
-            <TableRow className="hover:bg-transparent border-border/50">
-              <TableHead className="text-xs font-medium text-muted-foreground">Time</TableHead>
-              <TableHead className="text-xs font-medium text-muted-foreground">Agent</TableHead>
-              <TableHead className="text-xs font-medium text-muted-foreground">Action</TableHead>
-              <TableHead className="text-xs font-medium text-muted-foreground hidden md:table-cell">Guest</TableHead>
-              <TableHead className="text-xs font-medium text-muted-foreground hidden sm:table-cell">Channel</TableHead>
-              <TableHead className="text-xs font-medium text-muted-foreground">Status</TableHead>
+            <TableRow className="hover:bg-transparent border-[#e4e8ef]">
+              <TableHead className="text-xs font-medium text-[#5a6785]">Time</TableHead>
+              <TableHead className="text-xs font-medium text-[#5a6785]">Agent</TableHead>
+              <TableHead className="text-xs font-medium text-[#5a6785]">Action</TableHead>
+              <TableHead className="text-xs font-medium text-[#5a6785] hidden md:table-cell">Guest</TableHead>
+              <TableHead className="text-xs font-medium text-[#5a6785] hidden sm:table-cell">Channel</TableHead>
+              <TableHead className="text-xs font-medium text-[#5a6785]">Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -50,9 +50,9 @@ export function RecentActivity() {
               return (
                 <TableRow
                   key={log.id}
-                  className="group border-border/30 transition-colors hover:bg-muted/40"
+                  className="group border-[#e4e8ef] transition-colors hover:bg-[#f7f8fa]"
                 >
-                  <TableCell className="text-xs text-muted-foreground whitespace-nowrap">
+                  <TableCell className="text-xs text-[#94a3b8] whitespace-nowrap">
                     {timeAgo}
                   </TableCell>
                   <TableCell>
@@ -75,15 +75,15 @@ export function RecentActivity() {
                           {log.agentName[0]}
                         </AvatarFallback>
                       </Avatar>
-                      <span className="text-sm font-medium">{log.agentName}</span>
+                      <span className="text-sm font-medium text-[#0c1222]">{log.agentName}</span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-sm">{log.actionType}</TableCell>
-                  <TableCell className="text-sm text-muted-foreground hidden md:table-cell">
+                  <TableCell className="text-sm text-[#3d4b63]">{log.actionType}</TableCell>
+                  <TableCell className="text-sm text-[#5a6785] hidden md:table-cell">
                     {log.guestName}
                   </TableCell>
                   <TableCell className="hidden sm:table-cell">
-                    <span className="rounded-md bg-muted/60 px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                    <span className="rounded-md bg-[#f7f8fa] px-2 py-0.5 text-xs font-medium text-[#5a6785]">
                       {log.channel}
                     </span>
                   </TableCell>

@@ -16,16 +16,16 @@ import { chartColors } from "@/lib/design-tokens";
 function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-lg border border-border/60 bg-popover/95 px-3.5 py-2.5 shadow-xl backdrop-blur-sm">
-      <p className="mb-1.5 text-xs font-semibold text-foreground">{label}</p>
+    <div className="rounded-lg border border-[#e4e8ef] bg-white px-3.5 py-2.5 shadow-xl">
+      <p className="mb-1.5 text-xs font-semibold text-[#0c1222]">{label}</p>
       {payload.map((entry: any) => (
         <div key={entry.name} className="flex items-center gap-2 text-xs">
           <span
             className="h-2 w-2 rounded-full"
             style={{ backgroundColor: entry.color }}
           />
-          <span className="text-muted-foreground capitalize">{entry.name}:</span>
-          <span className="font-semibold text-foreground">{entry.value}</span>
+          <span className="text-[#5a6785] capitalize">{entry.name}:</span>
+          <span className="font-semibold text-[#0c1222]">{entry.value}</span>
         </div>
       ))}
     </div>
@@ -34,14 +34,14 @@ function CustomTooltip({ active, payload, label }: any) {
 
 export function MessageVolumeChart() {
   return (
-    <Card className="border-border/50 shadow-none">
+    <Card className="border-[#e4e8ef] shadow-none rounded-2xl">
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle className="text-sm font-semibold">Message Volume</CardTitle>
-            <p className="text-xs text-muted-foreground mt-0.5">Last 7 days</p>
+            <CardTitle className="text-sm font-semibold text-[#0c1222]">Message Volume</CardTitle>
+            <p className="text-xs text-[#5a6785] mt-0.5">Last 7 days</p>
           </div>
-          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+          <div className="flex items-center gap-4 text-xs text-[#5a6785]">
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: chartColors.primary }} />
               Messages
@@ -67,15 +67,15 @@ export function MessageVolumeChart() {
                   <stop offset="100%" stopColor={chartColors.danger} stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" strokeOpacity={0.5} vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e4e8ef" strokeOpacity={0.5} vertical={false} />
               <XAxis
                 dataKey="date"
-                tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fontSize: 12, fill: "#94a3b8" }}
                 axisLine={false}
                 tickLine={false}
               />
               <YAxis
-                tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fontSize: 12, fill: "#94a3b8" }}
                 axisLine={false}
                 tickLine={false}
               />
