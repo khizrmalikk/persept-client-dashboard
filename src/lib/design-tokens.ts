@@ -1,33 +1,85 @@
 // Design system tokens for the Persept dashboard
-// Inspired by Linear, Vercel, and Stripe aesthetics
+// EXACT colors extracted from persept.ai website
 
-export const colors = {
-  // Brand gradients
-  gradients: {
-    primary: "from-indigo-500 to-purple-600",
-    secondary: "from-cyan-500 to-blue-600",
-    success: "from-emerald-400 to-teal-500",
-    warning: "from-amber-400 to-orange-500",
-    danger: "from-rose-400 to-red-500",
-    sidebar: "from-slate-900 via-slate-900 to-indigo-950",
-    card: "from-white/80 to-white/40",
-    cardDark: "from-white/[0.08] to-white/[0.03]",
+// ── Brand Colors (extracted from persept.ai) ──────────────────────────
+export const brand = {
+  red: "#b91c1c",       // Primary CTA buttons, accents
+  redHover: "#991b1b",  // Button hover state
+  redLight: "#fef2f2",  // Light red backgrounds (icon badges)
+  redMuted: "#b91c1c1a", // 10% opacity red for subtle backgrounds
+} as const;
+
+export const palette = {
+  background: {
+    primary: "#ffffff",
+    secondary: "#f7f8fa",  // Section backgrounds
+    tertiary: "#f3f4f6",   // Large watermark numbers
   },
-  // Agent brand colors
+  text: {
+    primary: "#0c1222",    // Headings, bold text
+    secondary: "#3d4b63",  // Body text
+    muted: "#5a6785",      // Secondary/muted text
+    caption: "#94a3b8",    // Footer, timestamps
+  },
+  border: {
+    light: "#e4e8ef",      // Default borders
+    hover: "#c7d2e0",      // Hover borders
+  },
+} as const;
+
+// ── Agent Colors (from persept.ai agent section) ──────────────────────
+export const colors = {
   agents: {
-    Sarah: { bg: "bg-blue-500/10", text: "text-blue-500", ring: "ring-blue-500/30", gradient: "from-blue-400 to-blue-600" },
-    Marcus: { bg: "bg-violet-500/10", text: "text-violet-500", ring: "ring-violet-500/30", gradient: "from-violet-400 to-violet-600" },
-    Olivia: { bg: "bg-emerald-500/10", text: "text-emerald-500", ring: "ring-emerald-500/30", gradient: "from-emerald-400 to-emerald-600" },
-    Alex: { bg: "bg-amber-500/10", text: "text-amber-500", ring: "ring-amber-500/30", gradient: "from-amber-400 to-amber-600" },
-  } as Record<string, { bg: string; text: string; ring: string; gradient: string }>,
-  // Status
+    Sarah: {
+      color: "#b91c1c",
+      bg: "bg-[#fef2f2]",
+      text: "text-[#b91c1c]",
+      ring: "ring-[#b91c1c]/30",
+      gradient: "from-[#b91c1c] to-[#991b1b]",
+    },
+    Marcus: {
+      color: "#7c3aed",
+      bg: "bg-[#f5f3ff]",
+      text: "text-[#7c3aed]",
+      ring: "ring-[#7c3aed]/30",
+      gradient: "from-[#7c3aed] to-[#6d28d9]",
+    },
+    Olivia: {
+      color: "#047857",
+      bg: "bg-[#ecfdf5]",
+      text: "text-[#047857]",
+      ring: "ring-[#047857]/30",
+      gradient: "from-[#047857] to-[#065f46]",
+    },
+    Alex: {
+      color: "#1d4ed8",
+      bg: "bg-[#eff6ff]",
+      text: "text-[#1d4ed8]",
+      ring: "ring-[#1d4ed8]/30",
+      gradient: "from-[#1d4ed8] to-[#1e40af]",
+    },
+  } as Record<string, { color: string; bg: string; text: string; ring: string; gradient: string }>,
+
   status: {
-    handled: { bg: "bg-emerald-500/10", text: "text-emerald-600 dark:text-emerald-400", dot: "bg-emerald-500" },
-    escalated: { bg: "bg-amber-500/10", text: "text-amber-600 dark:text-amber-400", dot: "bg-amber-500" },
-    pending: { bg: "bg-blue-500/10", text: "text-blue-600 dark:text-blue-400", dot: "bg-blue-500" },
+    handled: {
+      bg: "bg-emerald-500/10",
+      text: "text-emerald-700",
+      dot: "bg-emerald-500",
+    },
+    escalated: {
+      bg: "bg-[#fef2f2]",
+      text: "text-[#b91c1c]",
+      dot: "bg-[#b91c1c]",
+    },
+    pending: {
+      bg: "bg-[#eff6ff]",
+      text: "text-[#1d4ed8]",
+      dot: "bg-[#1d4ed8]",
+    },
   } as Record<string, { bg: string; text: string; dot: string }>,
 } as const;
 
+// ── Animation Tokens ──────────────────────────────────────────────────
 export const animations = {
   duration: {
     fast: 0.15,
@@ -47,12 +99,13 @@ export const animations = {
   },
 } as const;
 
-// Chart colors matching brand
+// ── Chart Colors (brand-aligned) ──────────────────────────────────────
 export const chartColors = {
-  primary: "#6366f1",   // indigo-500
-  secondary: "#8b5cf6", // violet-500
-  success: "#10b981",   // emerald-500
-  warning: "#f59e0b",   // amber-500
-  danger: "#ef4444",    // red-500
-  info: "#06b6d4",      // cyan-500
+  primary: "#b91c1c",   // Brand red
+  secondary: "#7c3aed", // Marcus purple
+  success: "#047857",   // Olivia green
+  warning: "#d97706",   // Amber
+  info: "#1d4ed8",      // Alex blue
+  // Red tints for donut chart segments
+  redTints: ["#b91c1c", "#dc2626", "#ef4444", "#f87171", "#fca5a5"],
 } as const;
