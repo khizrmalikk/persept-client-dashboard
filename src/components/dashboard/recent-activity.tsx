@@ -62,13 +62,13 @@ export function RecentActivity() {
                           className="text-[10px] font-bold text-white"
                           style={{
                             backgroundImage: `linear-gradient(to bottom right, ${
-                              log.agentName === "Sarah" ? "#3b82f6" :
-                              log.agentName === "Marcus" ? "#8b5cf6" :
-                              log.agentName === "Olivia" ? "#10b981" : "#f59e0b"
+                              log.agentName === "Sarah" ? "#b91c1c" :
+                              log.agentName === "Marcus" ? "#7c3aed" :
+                              log.agentName === "Olivia" ? "#047857" : "#1d4ed8"
                             }, ${
-                              log.agentName === "Sarah" ? "#6366f1" :
-                              log.agentName === "Marcus" ? "#a855f7" :
-                              log.agentName === "Olivia" ? "#14b8a6" : "#f97316"
+                              log.agentName === "Sarah" ? "#991b1b" :
+                              log.agentName === "Marcus" ? "#6d28d9" :
+                              log.agentName === "Olivia" ? "#065f46" : "#1e40af"
                             })`,
                           }}
                         >

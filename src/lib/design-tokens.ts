@@ -105,6 +105,7 @@ export const chartColors = {
   secondary: "#7c3aed", // Marcus purple
   success: "#047857",   // Olivia green
   warning: "#d97706",   // Amber
+  danger: "#ef4444",    // Escalation red
   info: "#1d4ed8",      // Alex blue
   // Red tints for donut chart segments
   redTints: ["#b91c1c", "#dc2626", "#ef4444", "#f87171", "#fca5a5"],

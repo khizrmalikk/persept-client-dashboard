@@ -8,7 +8,7 @@ export const agents: Agent[] = [
     lastActivity: "2 minutes ago",
     todayMessages: 187,
     avatar: "S",
-    color: "#3B82F6",
+    color: "#b91c1c",
   },
   {
     name: "Marcus",
@@ -17,7 +17,7 @@ export const agents: Agent[] = [
     lastActivity: "5 minutes ago",
     todayMessages: 42,
     avatar: "M",
-    color: "#8B5CF6",
+    color: "#7c3aed",
   },
   {
     name: "Olivia",
@@ -26,7 +26,7 @@ export const agents: Agent[] = [
     lastActivity: "12 minutes ago",
     todayMessages: 23,
     avatar: "O",
-    color: "#10B981",
+    color: "#047857",
   },
   {
     name: "Alex",
@@ -35,7 +35,7 @@ export const agents: Agent[] = [
     lastActivity: "1 hour ago",
     todayMessages: 8,
     avatar: "A",
-    color: "#F59E0B",
+    color: "#1d4ed8",
   },
 ];
 
@@ -81,10 +81,10 @@ export const messageVolumeData: MessageVolumeData[] = [
 ];
 
 export const agentActivityData: AgentActivityData[] = [
-  { name: "Sarah", value: 60, color: "#3B82F6" },
-  { name: "Marcus", value: 20, color: "#8B5CF6" },
-  { name: "Olivia", value: 12, color: "#10B981" },
-  { name: "Alex", value: 8, color: "#F59E0B" },
+  { name: "Sarah", value: 60, color: "#b91c1c" },
+  { name: "Marcus", value: 20, color: "#7c3aed" },
+  { name: "Olivia", value: 12, color: "#047857" },
+  { name: "Alex", value: 8, color: "#1d4ed8" },
 ];
 
 export const recentLogs: AgentLog[] = [
